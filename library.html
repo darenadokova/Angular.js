@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="lib/angular.min.js"></script>
+    <script src="app/apps_library.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <title>Rегионална библиотека "П. К. Яворов" - Angular.js</title>
+
+</head>
+<body>
+    <div class="about">
+    <p>Добре дошли в регионална библиотека <b>"П. К. Яворов" - Бургас</b>!</p>
+</div>
+
+    <p>Изберете книгата, която търсите</p>
+    <div ng-app="LibraryApp" ng-controller="DefaultController">
+        <input type="text" ng-model='search'>
+
+       
+        <input type="radio" ng-click="sort='title'" id="title" name="books" >  
+        <label for="title">Заглавие</label> 
+
+        <input type="radio" ng-click="sort='author'" id="author" name="books" >
+        <label for="author">Автор</label>
+
+        <input type="radio" ng-click="sort='pages'" id="pages" name="books" >
+        <label for="pages" ng-click="sort='pages'">Страници</label>
+
+        <input type="radio" ng-click="sort='year'" id="year" name="books" >
+        <label for="year">Година на издаване</label>
+
+        <input type="radio" ng-click="sort='covers'" id="covers" name="books" >
+        <label for="covers">Корици</label>
+  
+       
+
+        <div class="container">
+            <div class="main-book" ng-repeat="book in books | orderBy: sort | filter: search ">
+                <div class="book-img">
+                    <img ng-src="{{book.src}}"/>
+                </div>
+                <div class="book-info">
+                <h3>{{ book.title }}</h3>
+                <p><b>Автор: {{ book.author }}</b></p>
+                <p>Страници: {{ book.pages }}</p>
+                <p>Година на издаване: {{ book.year }}</p>
+                <p>Корици: {{ book.covers }}</p>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright &copy; Powered by <span><a href="https://darenadokova.com/" target="_blank">Darena Dokova</a></span></p>
+        
+    </footer>
+
+</body>
+</html>
