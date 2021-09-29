@@ -18,25 +18,15 @@
 
     <p>Изберете книгата, която търсите</p>
     <div ng-app="LibraryApp" ng-controller="DefaultController">
-        <input type="text" ng-model='search'>
-
-       
-        <input type="radio" ng-click="sort='title'" id="title" name="books" >  
-        <label for="title">Заглавие</label> 
-
-        <input type="radio" ng-click="sort='author'" id="author" name="books" >
-        <label for="author">Автор</label>
-
-        <input type="radio" ng-click="sort='pages'" id="pages" name="books" >
-        <label for="pages" ng-click="sort='pages'">Страници</label>
-
-        <input type="radio" ng-click="sort='year'" id="year" name="books" >
-        <label for="year">Година на издаване</label>
-
-        <input type="radio" ng-click="sort='covers'" id="covers" name="books" >
-        <label for="covers">Корици</label>
-  
-       
+        <input class="input-search" type="text" ng-model='search' placeholder="Въведи текст">
+        
+        <label for="">Сортирай по:</label>
+        <button class="btn-sort" ng-click="sort='title'">Заглавие А-Я</button>
+        <button class="btn-sort" ng-click="sort='author'">Автор</button>
+        <button class="btn-sort" ng-click="sort='pages'">Страници</button>
+        <button class="btn-sort" ng-click="sort='year'">Година на издаване</button>
+        <button class="btn-sort" ng-click="sort='covers'">Корици</button>
+        
 
         <div class="container">
             <div class="main-book" ng-repeat="book in books | orderBy: sort | filter: search ">
